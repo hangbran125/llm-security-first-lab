@@ -93,6 +93,6 @@ the author owns. Only test systems you own or are authorized to test.
 
 ---
 
-<sub>Week 3 of a structured AI-security learning program (foundations → LLM security →
-red teaming). The Week 4 follow-up scales this into a
+<sub>Part of a public portfolio in defensive AI security: AI security engineering first, AI threat
+investigation second, and AI red teaming as a testing skill. The follow-up scales this into a
 <a href="https://github.com/hangbran125/prompt-injection-test-harness">15-payload automated test harness</a>.</sub>
