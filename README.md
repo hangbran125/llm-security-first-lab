@@ -48,14 +48,29 @@ negative result *is* the finding: naive-to-moderate injection at the model layer
 wasn't enough to break a benign task instruction.
 
 **Mitigation.** Model robustness held, but isn't a substitute for system-level
-defenses — delimit untrusted input and treat it as data (**OWASP LLM01**), treat model
-output as untrusted (**LLM05**), apply least privilege to tools (**LLM06**), and layer
+defenses — delimit untrusted input and treat it as data (**OWASP LLM01:2026**), treat model
+output as untrusted (**LLM10:2026**), apply least privilege to tools (**LLM03:2026**), and layer
 defenses (input classifiers, system-prompt hardening, monitoring). No single layer is
 complete, especially against indirect injection.
 
 **Scope caveat.** One model, a single-line system prompt, a benign target output.
 Results may differ against weaker models, multi-step attacks, or higher-stakes
 injected instructions.
+
+## Framework mapping
+
+| Framework | ID | Name | Where it applies here |
+|-----------|----|------|-----------------------|
+| OWASP LLM Top 10 2026 | LLM01:2026 | Prompt Injection | All five technique families (primary risk) |
+| OWASP LLM Top 10 2026 | LLM10:2026 | Improper Output Handling | Mitigation: treat model output as untrusted |
+| OWASP LLM Top 10 2026 | LLM03:2026 | Excessive Agency | Mitigation: least privilege for tools |
+| MITRE ATLAS | AML.T0051.000 | LLM Prompt Injection: Direct | Direct override, fake completion, authority spoofing, task reframing |
+| MITRE ATLAS | AML.T0051.001 | LLM Prompt Injection: Indirect | The instruction hidden inside "data" the bot was asked to translate |
+
+The notebook predates the 2026 edition and uses its 2025 numbering: Improper Output
+Handling was LLM05 and Excessive Agency LLM06. Sources:
+[OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)
+and [MITRE ATLAS](https://atlas.mitre.org/).
 
 ## Run it yourself
 
@@ -80,4 +95,4 @@ the author owns. Only test systems you own or are authorized to test.
 
 <sub>Week 3 of a structured AI-security learning program (foundations → LLM security →
 red teaming). The Week 4 follow-up scales this into a
-<a href="https://github.com/hangbran125/week-4">15-payload automated test harness</a>.</sub>
+<a href="https://github.com/hangbran125/prompt-injection-test-harness">15-payload automated test harness</a>.</sub>
